@@ -70,24 +70,16 @@ action = {
         Timer.callLater(1, function ()
             angleT:start()
             pointT:start()
-            sleep(6) -- отправка команды автопилоту на полет к точке с координатами (0 м, 1 м, 1 м)
-            curr_state = "FLIGHT_TO_LAST_POINT" -- переход в следующее состояние
-        end)
-    end,
-    ["FLIGHT_TO_LAST_POINT"] = function (x)
-        changeColor(colors[4]) -- смена цвета светодиодов на желтый
-        Timer.callLater(2, function ()
-            
-            -- ap.goToLocalPoint(0, 0, 0.8, 6) -- отправка команды автопилоту на полет к точке взлета (0 м, 0 м, 0.8 м)
+            sleep(6) -- секунд выполнения цикла
             curr_state = "PIONEER_LANDING" -- переход в следующее состояние
         end)
     end,
     ["PIONEER_LANDING"] = function (x)
         changeColor(colors[2]) -- смена цвета светодиодов на белый
         Timer.callLater(2, function ()
-            -- ap.updateYaw(0)
             pointT:stop()
             angleT:stop()
+            ap.goToLocalPoint(0, 0, height)
             ap.push(Ev.MCE_LANDING) -- отправка команды автопилоту на посадку
         end)
     end
