@@ -5,6 +5,8 @@ local leds = Ledbar.new(ledNumber)
 -- ассоциируем функцию распаковки таблиц из модуля table для упрощения
 local unpack = table.unpack
 
+local rc = Sensors.rc
+
 -- переменная текущего состояния
 local curr_state = "PREPARE_FLIGHT"
 
@@ -46,13 +48,26 @@ local height = 0.7
 pointT = Timer.new(0.1, function()
     angle = angle + value
     if angle > 360 then
-        angle = angle - 360
+        angle = 0
     end
     yCord = r*math.sin(angle * math.pi / 180)
     xCord = r*math.cos(angle * math.pi / 180)
     ap.goToLocalPoint(xCord, yCord, height)
 end)
 
+controlTimer = Timer.new(0.01, function () -- создаем таймер, который будет вызывать нашу функцию 100 раз в секунуду
+    _, _, _, _, _, _, _, ch8 = rc() -- считываем сигнал с 8 канала на пульте, значение от -1 до 1
+    if(ch8 < 0) then  -- если сигнал с пульта -1 (SWA вверх), то включаем
+        changeColor(colors[5])
+        pointT:start()
+        angleT:start()
+    else -- если сигнал с пульта 1 (SWA вниз), то выключаем
+        changeColor(colors[6])
+        pointT:stop()
+        angleT:stop()
+        curr_state = "PIONEER_LANDING"
+    end
+end)
 -- таблица функций, вызываемых в зависимости от состояния
 action = {
     ["PREPARE_FLIGHT"] = function(x)
@@ -68,17 +83,14 @@ action = {
     ["FLIGHT_TO_FIRST_POINT"] = function (x)
         changeColor(colors[4]) -- смена цвета светодиодов на желтый
         Timer.callLater(1, function ()
-            angleT:start()
-            pointT:start()
-            sleep(6) -- секунд выполнения цикла
-            curr_state = "PIONEER_LANDING" -- переход в следующее состояние
+            controlTimer:start()
+           
         end)
     end,
     ["PIONEER_LANDING"] = function (x)
         changeColor(colors[2]) -- смена цвета светодиодов на белый
         Timer.callLater(2, function ()
-            pointT:stop()
-            angleT:stop()
+            controlTimer:stop()
             ap.goToLocalPoint(0, 0, height)
             ap.push(Ev.MCE_LANDING) -- отправка команды автопилоту на посадку
         end)

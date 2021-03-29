@@ -7,13 +7,9 @@ function callback(event)
 end
 
 
-local function goSleep(time)
-    sleep(time*1000 / 1000.0)
-end
-
 -- функция смены цвета светодиодов
 local function changeColor(red, green, blue)
-    for i=0, led_number - 1, 1 do
+    for i=0, led_number - 1 do
         leds:set(i, red, green, blue)
     end
 end
@@ -24,7 +20,7 @@ cargoTimer = Timer.new(0.1, function () -- создаем таймер, кото
         magneto:set()
         changeColor(0, 1, 0) -- и сигнализируем об активации зеленым цветом
     else if(ch8 > 0) then -- если сигнал с пульта 1 (SWA вниз), то выключаем
-        goSleep(2) -- добавим задержку в 2 секунды перед выключением магнита
+        sleep(2) -- добавим задержку в 2 секунды перед выключением магнита
         magneto:reset()
         changeColor(1, 0, 0) -- когда магнит отключен, светодиоды горят красным
     else -- синий мигающий цвет светодиодов сигнализирует об отсутствии сигнала на восьмом канале
