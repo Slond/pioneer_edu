@@ -5,15 +5,14 @@ local leds = Ledbar.new(ledNumber)
 -- ассоциируем функцию распаковки таблиц из модуля table для упрощения
 local unpack = table.unpack
 
-local rc = Sensors.rc
-
 -- переменная текущего состояния
 local curr_state = "PREPARE_FLIGHT"
+
 
 -- функция, изменяющая цвет 4-х RGB светодиодов на основной плате пионера
 local function changeColor(color)
     -- проходим в цикле по всем светодиодам с 0 по 3
-    for i=0, ledNumber - 1 do 
+    for i=0, ledNumber - 1 do
         leds:set(i, unpack(color))
     end
 end
@@ -29,69 +28,41 @@ local colors = {
         {0, 0, 0}  -- черный/отключение светодиодов
 }
 
+local r = 0.3 -- радиус окружности
+local angle = 30 --угол для точек
+local points = {}
 
-local value = 3
-local i = 0
+for i=1, 12 do
+    xCoord = r * math.cos(i * angle * math.pi / 180)
+    yCoord = r * math.sin(i * angle * math.pi / 180)
+    points[i] = {xCoord, yCoord, 0.7}
+end
 
-angleT = Timer.new(0.1, function()
-    ap.updateYaw(-i/180*math.pi)    
-i = i+value
-end)
+local j = 1
 
-
-local r = 0.3
-local angle = 0
-local xCord = 0
-local yCord = 0
-local height = 0.7
-
-pointT = Timer.new(0.1, function()
-    angle = angle + value
-    if angle > 360 then
-        angle = 0
-    end
-    yCord = r*math.sin(angle * math.pi / 180)
-    xCord = r*math.cos(angle * math.pi / 180)
-    ap.goToLocalPoint(xCord, yCord, height)
-end)
-
-controlTimer = Timer.new(0.01, function () -- создаем таймер, который будет вызывать нашу функцию 100 раз в секунуду
-    _, _, _, _, _, _, _, ch8 = rc() -- считываем сигнал с 8 канала на пульте, значение от -1 до 1
-    if(ch8 < 0) then  -- если сигнал с пульта -1 (SWA вверх), то включаем
-        changeColor(colors[5])
-        pointT:start()
-        angleT:start()
-    else -- если сигнал с пульта 1 (SWA вниз), то выключаем
-        changeColor(colors[6])
-        pointT:stop()
-        angleT:stop()
-        curr_state = "PIONEER_LANDING"
-    end
-end)
 -- таблица функций, вызываемых в зависимости от состояния
 action = {
-    ["PREPARE_FLIGHT"] = function(x)
+    ["PREPARE_FLIGHT"] = function()
         changeColor(colors[2]) -- смена цвета светодиодов на белый
         Timer.callLater(2, function () ap.push(Ev.MCE_PREFLIGHT) end) -- через 2 секунды отправляем команду автопилоту на запуск моторов
         Timer.callLater(4, function () changeColor(colors[3]) end)-- еще через 2 секунды (суммарно 4 секунды, так как таймеры запускаются сразу же друг за другом) меняем цвета светодиодов на зеленый
         Timer.callLater(6, function ()
             ap.push(Ev.MCE_TAKEOFF) -- еще через 2 секунды (суммарно через 6 секунд) отправляем команду автопилоту на взлет
-            ap.goToLocalPoint(0,0, height)
-            curr_state = "FLIGHT_TO_FIRST_POINT" -- переход в следующее состояние
+            curr_state = "FLIGHT" -- переход в следующее состояние
         end)
     end,
-    ["FLIGHT_TO_FIRST_POINT"] = function (x)
-        changeColor(colors[4]) -- смена цвета светодиодов на желтый
-        Timer.callLater(1, function ()
-            controlTimer:start()
-           
-        end)
+    ["FLIGHT"] = function ()
+        while j < #points do
+            ap.goToLocalPoint(unpack(points[j]))
+            j = j + 1
+            curr_state = "FLIGHT"
+            break
+        end
+        curr_state = "PIONEER_LANDING"
     end,
-    ["PIONEER_LANDING"] = function (x)
-        changeColor(colors[2]) -- смена цвета светодиодов на белый
+    ["PIONEER_LANDING"] = function ()
+        changeColor(colors[6]) -- смена цвета светодиодов на синий
         Timer.callLater(2, function ()
-            controlTimer:stop()
-            ap.goToLocalPoint(0, 0, height)
             ap.push(Ev.MCE_LANDING) -- отправка команды автопилоту на посадку
         end)
     end
@@ -103,25 +74,21 @@ function callback(event)
     if (event == Ev.TAKEOFF_COMPLETE) then
         action[curr_state]()
     end
-    
-    -- если коптер с чем-то столкнулся, то зажигаем светодиоды красным
+    -- если пионер с чем-то столкнулся, то зажигаем светодиоды красным и выключаем двигатели
     if (event == Ev.SHOCK) then
         changeColor(colors[1])
-        angleT:stop()
-        pointT:stop()
+        ap.push(ENGINES_DISARM)
     end
-    
     -- если пионер достигнул точки, то выполняем функцию из таблицы, соответствующую текущему состоянию
     if (event == Ev.POINT_REACHED) then
         action[curr_state]()
     end
-
     -- если пионер приземлился, то выключаем светодиоды
     if (event == Ev.COPTER_LANDED) then
         changeColor(colors[7])
     end
-
 end
+
 
 -- включаем светодиод (красный цвет)
 changeColor(colors[1])
