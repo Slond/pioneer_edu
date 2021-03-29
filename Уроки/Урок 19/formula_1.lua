@@ -80,13 +80,11 @@ pointT = Timer.new(0.1, function()
 end)
 
 
-local old_lap = 0
+local laps = 0
 lapT = Timer.new(1, function()
-    if laps ~= old_lap then
-        changeColor(colors.black)
-        sleep(0.01)
-        numberLed(lap, colors.green)
-    end
+    changeColor(colors.black)
+    sleep(0.1)
+    numberLed(laps, colors.green)
 end)
 
 checkT = Timer.new(0.1, function () -- создаем таймер, который будет вызывать нашу функцию 10 раз в секунуду
@@ -95,11 +93,9 @@ checkT = Timer.new(0.1, function () -- создаем таймер, которы
         pointT:start()
         angleT:start()
         if laps > 10 then
-            laps = laps - 1
+            laps = laps + 1
         end
-        lapT:start()
     else -- если сигнал с пульта 1 (SWA вниз), то выключаем
-        changeColor(colors.blue)
         pointT:stop()
         angleT:stop()
         curr_state = "PIONEER_LANDING"
@@ -122,6 +118,7 @@ action = {
         changeColor(colors.yellow) -- смена цвета светодиодов на желтый
         Timer.callLater(1, function ()
             checkT:start()
+            lapT:start()
              -- переход в следующее состояние
         end)
     end,
@@ -130,6 +127,7 @@ action = {
         Timer.callLater(2, function ()
             checkT:stop()
             ap.goToLocalPoint(0, 0, height)
+            lapT:stop()
             ap.push(Ev.MCE_LANDING) -- отправка команды автопилоту на посадку
         end)
     end
