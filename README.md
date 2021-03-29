@@ -16,11 +16,11 @@
 
 ---
 
-## Язык программирования
+## Языки программирования
 
-### [Lua](https://learnxinyminutes.com/docs/ru-ru/lua-ru/)
+### [Документация по Lua](https://learnxinyminutes.com/docs/ru-ru/lua-ru/)
 
-### [Python](https://docs.python.org/3/)
+### [Документация по Python](https://docs.python.org/3/)
 
 ---
 
