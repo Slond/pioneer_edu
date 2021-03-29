@@ -1,11 +1,43 @@
-# pioneer_edu
-Методическое пособие
+# Методическое пособие по Геоскан Пионер совместно с [Фондом содействия развитию военного образования](https://fsrvo.ru)
 
-1. https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe
-2. https://pioneer-doc.readthedocs.io/ru/master/programming/pioneer_station/pioneer_station_main.html
-3. https://pioneer-doc.readthedocs.io/ru/master/programming/lua/lua.html
-4. https://learnxinyminutes.com/docs/ru-ru/lua-ru/
-5. https://pioneer-doc.readthedocs.io/ru/master/module/indoor_nav_lokus.html
-6. https://openmv.io/pages/download
-7. https://docs.openmv.io
-8. https://dl.geoscan.aero/pioneer/upload/LPS/Geoscan_LPS.exe
+![Geoscan Pioneer](https://pioneer-doc.readthedocs.io/ru/master/_images/pioneer1.png)
+
+---
+
+## Установка необходимых IDE
+
+[Файл установки TRIK Studio](https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe)
+
+[Файл установки Pioneer Station](https://pioneer-doc.readthedocs.io/ru/master/programming/pioneer_station/pioneer_station_main.html)
+
+[Geoscan LPS](https://dl.geoscan.aero/pioneer/upload/LPS/Geoscan_LPS.exe)
+
+[OpenMV IDE](https://openmv.io/pages/download)
+
+---
+
+## Язык программирования
+
+### [Lua](https://learnxinyminutes.com/docs/ru-ru/lua-ru/)
+
+### [Python](https://docs.python.org/3/)
+
+---
+
+## [Документация по API](https://pioneer-doc.readthedocs.io/ru/master/programming/lua/lua.html)
+
+---
+
+## Настройка системы навигации "Локус"
+
+### [Документация](https://pioneer-doc.readthedocs.io/ru/master/module/indoor_nav_lokus.html)
+
+### [PDF по настройке](https://dl.geoscan.aero/pioneer/upload/Docs/User_manual_Locus.pdf)
+
+---
+
+## Камера OpenMV
+
+[Документация](https://docs.openmv.io)
+
+---
