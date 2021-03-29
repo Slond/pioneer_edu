@@ -41,3 +41,4 @@
 ### [Документация](https://docs.openmv.io)
 
 ---
+Сделал [Азибаев Ренат](https://t.me/azibaev_renat)
