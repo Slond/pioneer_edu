@@ -6,13 +6,13 @@
 
 ## Установка необходимых IDE
 
-[Файл установки TRIK Studio](https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe)
+### [Файл установки TRIK Studio](https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe)
 
-[Файл установки Pioneer Station](https://pioneer-doc.readthedocs.io/ru/master/programming/pioneer_station/pioneer_station_main.html)
+### [Файл установки Pioneer Station](https://pioneer-doc.readthedocs.io/ru/master/programming/pioneer_station/pioneer_station_main.html)
 
-[Geoscan LPS](https://dl.geoscan.aero/pioneer/upload/LPS/Geoscan_LPS.exe)
+### [Geoscan LPS](https://dl.geoscan.aero/pioneer/upload/LPS/Geoscan_LPS.exe)
 
-[OpenMV IDE](https://openmv.io/pages/download)
+### [OpenMV IDE](https://openmv.io/pages/download)
 
 ---
 
