@@ -80,7 +80,7 @@ pointT = Timer.new(0.1, function()
 end)
 
 
-local laps = 0
+local laps = 1
 lapT = Timer.new(1, function()
     changeColor(colors.black)
     sleep(0.1)
@@ -93,7 +93,7 @@ checkT = Timer.new(0.1, function () -- создаем таймер, которы
         pointT:start()
         angleT:start()
         if laps > 10 then
-            laps = laps + 1
+            laps = laps - 10
         end
     else -- если сигнал с пульта 1 (SWA вниз), то выключаем
         pointT:stop()
@@ -119,7 +119,6 @@ action = {
         Timer.callLater(1, function ()
             checkT:start()
             lapT:start()
-             -- переход в следующее состояние
         end)
     end,
     ["PIONEER_LANDING"] = function (x)
