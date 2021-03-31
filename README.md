@@ -4,6 +4,11 @@
 
 ---
 
+## [Пособие по сборке и пилотированию](Сборка%20и%20пилотирование.docx)
+
+## [Пособие по программированию](Программирование.docx)
+
+
 ## Установка необходимых IDE
 
 ### [Файл установки TRIK Studio](https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe)
