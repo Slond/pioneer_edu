@@ -44,7 +44,7 @@ local arrayOfNumbers = { -- числа от 1 до 10
     {1,6,11,16,21,3,4,5,8,10,13,15,18,20,23,24,25}
 } 
 
-local laps = 0
+local laps = 1
 
 function numberLed(number, color)
     for p = 1, #arrayOfNumbers[number] do
@@ -80,7 +80,7 @@ pointT = Timer.new(0.1, function()
 end)
 
 
-local laps = 1
+
 lapT = Timer.new(1, function()
     changeColor(colors.black)
     sleep(0.1)
