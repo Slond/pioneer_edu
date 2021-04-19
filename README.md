@@ -1,7 +1,7 @@
 # Методическое пособие по Геоскан Пионер совместно с [Фондом содействия развитию военного образования](https://fsrvo.ru)
 
 ![Geoscan Pioneer](https://pioneer-doc.readthedocs.io/ru/master/_images/pioneer1.png)
-
+!["Yandex.Metrika counter"](https://mc.yandex.ru/watch/76167004)
 ---
 
 ## [Пособие по сборке и пилотированию](https://github.com/Slond/pioneer_edu/raw/main/%D0%A1%D0%B1%D0%BE%D1%80%D0%BA%D0%B0%20%D0%B8%20%D0%BF%D0%B8%D0%BB%D0%BE%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5.docx)
