@@ -31,6 +31,7 @@
 
 ## [Документация по API](https://pioneer-doc.readthedocs.io/ru/master/programming/lua/lua.html)
 
+### [Настройка параметров автопилота](https://docs.geoscan.aero/ru/master/instructions/pioneer-max/settings/autopilot_parameters.html)
 ---
 
 ## Настройка системы навигации "Локус"
