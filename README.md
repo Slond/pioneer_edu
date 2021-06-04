@@ -7,7 +7,7 @@
 
 ## [Пособие по программированию](https://github.com/Slond/pioneer_edu/raw/main/Программирование.docx)
 
-## [FAQ](FAQ.md)
+## [FAQ](FAQ)
 
 ---
 
