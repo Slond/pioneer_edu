@@ -2,7 +2,7 @@
 
 ### 1. Runcam Hybrid
 #### [Мануал на английском](https://www.runcam.com/download/Hybrid/RC_Hybrid_Manual_EN.pdf)
-#### Правильное расположение камеры на картинке справа, ее необходимо перевернуть
+#### Правильное расположение камеры на картинке справа, т.е. её необходимо раскрутить и перевернуть
 ![image](https://user-images.githubusercontent.com/37597315/121355791-e9a22000-c938-11eb-95eb-5b5ed5876056.png)
 ![12](https://user-images.githubusercontent.com/37597315/121356971-0ee35e00-c93a-11eb-9c2e-e77c1c5d6c78.jpg)
 
