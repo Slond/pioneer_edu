@@ -21,6 +21,8 @@
 
 ### [OpenMV IDE](https://openmv.io/pages/download)
 
+### [Все необходимые прошивки](https://github.com/Slond/pioneer_edu/tree/main/Прошивка)
+
 ---
 
 ## Языки программирования
