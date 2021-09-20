@@ -19,7 +19,8 @@
 
 - ## Установка необходимых IDE
 
-  - ### [Файл установки TRIK Studio](https://dl.geoscan.aero/pioneer/upload/TRIKStudio/trik-studio-offline-installer.exe)
+  - ### [Файл установки TRIK Studio(Windows)](https://dl.trikset.com/ts/trik-studio-installer_2021-i686.exe)
+  - ### [Файл установки TRIK Studio(MacOS)](https://dl.trikset.com/ts/trik-studio-installer_2021-mac.dmg)
 
   - ### [Файл установки Pioneer Station](https://pioneer-doc.readthedocs.io/ru/master/programming/pioneer_station/pioneer_station_main.html)
 
