@@ -1,6 +1,6 @@
 <div align="center">
 
-# Методическое пособие по <a href="https://www.geoscan.aero/ru/products/pioneer/copter">Геоскан Пионер </a> совместно с <br>[Фондом содействия развитию военного образования](https://fsrvo.ru)
+# Методическое пособие по <a href="https://www.geoscan.aero/ru/products/pioneer/copter">Геоскан Пионер</a> совместно с <br>[Фондом содействия развитию военного образования](https://fsrvo.ru)
 
 <a href="https://www.geoscan.aero/ru/products/pioneer/copter"> ![Geoscan Pioneer](https://docs.geoscan.aero/ru/master/_images/pioneer.png) </a>
 
