@@ -12,6 +12,7 @@
 
   - ## [Пособие по программированию](https://github.com/Slond/pioneer_edu/raw/main/Программирование.pdf)
   - ## [Пособие по машинному зрению](https://github.com/Slond/pioneer_edu/raw/main/%D0%9C%D0%B0%D1%88%D0%B8%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B7%D1%80%D0%B5%D0%BD%D0%B8%D0%B5.pdf)
+  - ## [Пособие по аэрофотосъёмке](https://github.com/Slond/pioneer_edu/raw/main/Аэрофотосъемка.pdf)
 
 - ## [FAQ](FAQ)
 
